@@ -1,4 +1,4 @@
-complete1 <- function(directory, id="flag") {
+complete <- function(directory, id="flag") {
   setwd("D:/bcross/Documents/R")
   allfiles <- list.files(directory, full.names=TRUE) #get names of files
   fulltable <- lapply(allfiles, read.csv) #get data into tableframe
