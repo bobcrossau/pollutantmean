@@ -15,7 +15,8 @@ corr  <- function(directory, threshold = 0) {
       sect <- sect+1
     }
   } 
-  correlation <- cov(sulfate, nitrate, use = "complete.obs") # is use reqd
+  correlation <- cor(sulfate, nitrate, use = "complete.obs") # is use reqd
   print(correlation)
-  symnum1 <- symnum(correlation)
+  symnum(correlation)
 }
+
