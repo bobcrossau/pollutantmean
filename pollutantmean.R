@@ -1,17 +1,18 @@
-pollutantmean <- function(directory, pollutant, id = "flag")   {
-  setwd("D:/bcross/Documents/R")
+pollutantmean <- function(directory, pollutant, id = 1:332)   {
+  setwd("D:/Documents/Academic/R")
   allfiles <- list.files(directory, full.names=TRUE) #get names of files
   fulltable <- lapply(allfiles, read.csv) #get data into tableframe
   if (pollutant == 'sulfate')  {column <- 2} #determine if sulfate
   if (pollutant == 'nitrate')  {column <- 3} #determine if nitrate
-  if (id == "flag") # all datapoints required
-    for (i in 1:length(allfiles)) {
-      fullcolumn <- (data.frame(fulltable[i]) [, column])
-    } 
-  if (id != "flag")  {  # only 1 datapoint required
-    fullcolumn <- (data.frame(fulltable[id]) [, column]) 
+  fullcolumn <- integer()
+  n <- min(id)
+  for (i in 1:length(id)) { # string required values together
+    thiscolumn <- (data.frame(fulltable[n]) [, column])
+    fullcolumn <- append(fullcolumn, thiscolumn)
+        n <- n + 1
   } 
-  m <- mean(fullcolumn, na.rm = TRUE)
+    m <- mean(fullcolumn, na.rm = TRUE) #determine mean
   print(m)
 }
+
 
